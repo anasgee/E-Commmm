@@ -1,0 +1,11 @@
+types of error used 
+
+
+1 -> Async Error Handeling
+2 -> Unhandeled Promise Rejection
+3 -> Uncaught Error, when anythig not foud etc
+4 -> cast error, cast to object id failed blaaa blaaa blaaa
+
+
+
+
