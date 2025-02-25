@@ -1,5 +1,6 @@
 const catchAsyncError = require("../middleware/catchAsyncError");
 const Product = require("../models/productModel");
+const ApiFeatures = require("../utils/apifeatures");
 const ErrorHandler = require("../utils/errorhandler");
 
 
@@ -56,9 +57,11 @@ res.status(200).json({success:true,message:"Product Removed Successfully"})
 
 const getAllProducts = catchAsyncError(async(req,res,next)=>
    {
-   
-       const products = await Product.find();
-       res.status(200).json(products)
+      const apiFeatures = new ApiFeatures(Product.find(),req.query).search();
+      const product = await apiFeatures.query;
+       res.status(200).json({success:true,
+         product
+       })
    })
 
 
