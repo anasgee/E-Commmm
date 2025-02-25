@@ -15,7 +15,25 @@ class ApiFeatures{
         this.query = this.query.find({...name});
         return this
     }
+
+    // Filter for category search
+
+
+    filter(){
+        const queryCopy = {...this.queryStr};
+
+        const deleteKeywords = ["name","limit","page"];
+        deleteKeywords.forEach((key) => delete queryCopy[key]);
+
+        this.query = this.query.find(queryCopy);
+        return this;
+    }
+
+
+
 }
+
+
 
 module.exports = ApiFeatures
 

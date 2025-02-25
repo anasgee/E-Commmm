@@ -57,7 +57,7 @@ res.status(200).json({success:true,message:"Product Removed Successfully"})
 
 const getAllProducts = catchAsyncError(async(req,res,next)=>
    {
-      const apiFeatures = new ApiFeatures(Product.find(),req.query).search();
+      const apiFeatures = new ApiFeatures(Product.find(),req.query).search().filter();
       const product = await apiFeatures.query;
        res.status(200).json({success:true,
          product
