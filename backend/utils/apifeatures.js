@@ -21,9 +21,10 @@ class ApiFeatures{
 
     filter(){
         const queryCopy = {...this.queryStr};
-
+        console.log(queryCopy)
         const deleteKeywords = ["name","limit","page"];
         deleteKeywords.forEach((key) => delete queryCopy[key]);
+        console.log(queryCopy)
 
         this.query = this.query.find(queryCopy);
         return this;
