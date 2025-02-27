@@ -57,10 +57,12 @@ res.status(200).json({success:true,message:"Product Removed Successfully"})
 
 const getAllProducts = catchAsyncError(async(req,res,next)=>
    {
-      const apiFeatures = new ApiFeatures(Product.find(),req.query).search().filter();
+      const productCount = await Product.countDocuments();
+      const pageLimit = 5;
+      const apiFeatures = new ApiFeatures(Product.find(),req.query).search().filter().pagination(pageLimit);
       const product = await apiFeatures.query;
        res.status(200).json({success:true,
-         product
+         product,productCount
        })
    })
 
@@ -69,7 +71,6 @@ const getAllProducts = catchAsyncError(async(req,res,next)=>
 // Get Signle Product or product details
 
 const getProductDetails = catchAsyncError(async(req,res,next)=>{
-
 
    const product = await Product.findById(req.params.id);
    if(!product){
