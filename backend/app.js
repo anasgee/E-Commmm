@@ -12,6 +12,12 @@ app.use(errorMiddleware);
 
 // Unhandleled Promise Rejection
 
+PORT=4000
+#mongodburl
+#thisisurl
+
+MONGOURI=mongodb+srv://thisisraza:thisisraza@ecommerce.ug64v.mongodb.net/ecommerce
+
 
 
 module.exports = app;
